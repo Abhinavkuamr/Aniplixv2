@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './stylesheet/AnimeInfo.css';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
-import axios from '../axios';
+import axios from 'axios';
 
 function AnimeInfo() {
   const [anime, setAnime] = useState({});
