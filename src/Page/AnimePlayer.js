@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import './stylesheet/animeplayer.css';
-import axios from '../axios';
+import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 
 function AnimePlayer() {
