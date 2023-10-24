@@ -1,0 +1,117 @@
+.nav {
+  z-index: 3;
+}
+
+.animeplayer {
+  color: white;
+}
+.animeplayer__pagination {
+  padding-left: 260px;
+  z-index: 2;
+  position: relative;
+  top: 100px;
+}
+
+.animeplayer__contents {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
+  margin-top: 100px;
+  position: relative;
+}
+
+.animeplayer__episodes {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.animeplayer__episodes button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  margin-bottom: 10px;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
+}
+
+.animeplayer__episodes button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.animeplayer__veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.8); /* Gray color with transparency */
+  backdrop-filter: blur(8px); /* Apply blur effect */
+  z-index: 1; /* Ensure it's on top of the content */
+}
+
+.animeplayer__recommendation {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.animeplayer__row {
+  color: white;
+  margin-left: 20px;
+}
+
+.animeplayer__row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.animeplayer__row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.animeplayer__row__poster {
+  max-height: 230px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  margin-right: 10px;
+  width: 170px;
+  transition: transform 450ms;
+}
+
+.animeplayer__row__poster:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.animeplayer__des {
+  height: 150px;
+  overflow-y: scroll;
+}
+
+.animeplayer--fadeBottom {
+  height: 2.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  z-index: 2;
+  position: relative;
+}

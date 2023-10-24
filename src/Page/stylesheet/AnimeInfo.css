@@ -1,0 +1,116 @@
+.nav {
+  z-index: 3;
+}
+.animeinfo {
+  height: 500px;
+  color: white;
+  padding: 20px;
+  display: flex;
+}
+
+.animeinfo__contents {
+  display: flex;
+  padding: 80px 100px;
+  z-index: 2;
+  position: absolute;
+}
+
+.animeinfo__image {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.animeinfo__texts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 100px;
+}
+
+.animeinfo__veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.8); /* Gray color with transparency */
+  backdrop-filter: blur(8px); /* Apply blur effect */
+  z-index: 1; /* Ensure it's on top of the content */
+}
+
+.animeinfo__button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  padding-bottom: 0.5rem;
+  max-width: 200px;
+}
+
+.animeinfo__button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.animeinfo__genere {
+  background-color: rgba(78, 78, 78, 0.5); /* Gray color with transparency */
+  backdrop-filter: blur(5px); /* Apply blur effect */
+  position: absolute;
+  z-index: 2;
+}
+
+.animeinfo__extras {
+  z-index: 2;
+  position: absolute;
+  margin-right: 20px;
+  background-color: rgba(78, 78, 78, 0.5); /* Gray color with transparency */
+}
+
+.animeinfo__recommendation {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+.animeinfo__row {
+  color: white;
+  margin-left: 20px;
+}
+
+.animeinfo__row__posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.animeinfo__row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.animeinfo__row__poster {
+  max-height: 230px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  margin-right: 10px;
+  width: 170px;
+  transition: transform 450ms;
+}
+
+.animeinfo__row__poster:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.animeinfo__des {
+  height: 150px;
+  overflow-y: scroll;
+}
