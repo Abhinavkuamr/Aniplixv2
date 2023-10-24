@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Stylesheet/row.css';
-import axios from '../axios';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 function Row({ title, fetchUrl }) {
