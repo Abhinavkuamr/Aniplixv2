@@ -81,6 +81,7 @@ function AnimeInfo() {
                   to={`/info/${anime.title.romaji.split(' ').join('-')}-${
                     anime.id
                   }`}
+                  onClick={() => setLoading(true)}
                 >
                   <img
                     className={`animeinfo__row__poster`}
