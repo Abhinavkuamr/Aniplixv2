@@ -9,6 +9,7 @@ import {
 import AnimeInfo from './Page/AnimeInfo';
 import AnimePlayer from './Page/AnimePlayer';
 import Nav from './Component/Nav';
+import Loading from './Page/Loading';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           <Route path='/' element={<HomeScreen />} />
           <Route path='/info/:animeTitle' element={<AnimeInfo />} />
           <Route path='/watch/:animeTitle' element={<AnimePlayer />} />
+          {/*Testing purpose Loading screen [remove it]*/}
+          <Route path='/loading' element={<Loading />}></Route>
         </Routes>
       </div>
     </>

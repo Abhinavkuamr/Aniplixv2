@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './stylesheet/AnimeInfo.css';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Loading from './Loading';
 
 function AnimeInfo() {
   const [anime, setAnime] = useState({});
+  const [loading, setLoading] = useState(true);
   let location = useLocation();
   const anime_id = location.pathname
     .split('/')
@@ -19,6 +21,7 @@ function AnimeInfo() {
         `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}`
       );
       setAnime(response.data);
+      setLoading(false);
     }
     fetchAnime();
   }, [anime_id]);
@@ -26,6 +29,9 @@ function AnimeInfo() {
   const navigate = useNavigate();
   function handlePlayClicks(id, title) {
     navigate(`/watch/${title.split(' ').join('-')}-${id}`);
+  }
+  if (loading) {
+    return <Loading />;
   }
   return (
     <>

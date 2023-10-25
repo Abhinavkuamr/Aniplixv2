@@ -2,11 +2,14 @@ import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import './stylesheet/animeplayer.css';
 import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
+import Loading from './Loading';
 
 function AnimePlayer() {
   const [anime, setAnime] = useState([]);
   const [currentEpisode, SetCurrentEpisode] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [selectedEpisode, setSelectedEpisode] = useState(null); // State for the selected episode
   const episodesPerPage = 10; // Number of episodes to display per page
   let location = useLocation();
   const buttonRef = useRef(null); // Create a ref for the first button
@@ -23,6 +26,7 @@ function AnimePlayer() {
         `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}`
       );
       setAnime(response.data);
+      setLoading(false);
       if (response.data.episodes?.length > 0) {
         handleButtonClick(response.data.episodes[0].id);
       }
@@ -32,9 +36,8 @@ function AnimePlayer() {
   console.log(anime);
   useEffect(() => {
     // Simulate a click on the first button when the buttons are rendered
-    if (buttonRef.current) {
-      // Use setTimeout to delay the click until the iframe is loaded
 
+    if (buttonRef.current) {
       buttonRef.current?.click();
       // You can adjust the delay as needed
     }
@@ -42,12 +45,15 @@ function AnimePlayer() {
 
   async function handleButtonClick(ep_id) {
     //create the final link
+    setLoading(true);
     const response = await axios.get(
       `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
     );
     const ep_link = response.data.sources;
     console.log('here', ep_link[3]);
     SetCurrentEpisode(ep_link[3].url);
+    setLoading(false);
+    setSelectedEpisode(ep_id);
   }
   const indexOfLastEpisode = currentPage * episodesPerPage;
   const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
@@ -55,6 +61,9 @@ function AnimePlayer() {
     indexOfFirstEpisode,
     indexOfLastEpisode
   );
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -68,12 +77,14 @@ function AnimePlayer() {
         }}
       >
         <div className='animeplayer__veil' />
+        {/*<div className='animeplayer__pagination_episode'> </div>*/}
+
         <div className='animeplayer__pagination'>
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            Previous
+            Prev
           </button>
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
@@ -89,6 +100,12 @@ function AnimePlayer() {
                 ref={(ref) => index === 0 && (buttonRef.current = ref)}
                 key={episode_id}
                 onClick={() => handleButtonClick(episode_id.id)}
+                style={{
+                  backgroundColor:
+                    selectedEpisode === episode_id.id
+                      ? 'crimson'
+                      : 'rgba(51, 51, 51, 0.5)',
+                }}
               >
                 {episode_id.id}
               </button>
@@ -96,7 +113,6 @@ function AnimePlayer() {
           </div>
           <div className='animeplayer__iframe'>
             <iframe
-              onLoad={() => buttonRef.current?.click()}
               src={`https://plyr.link/p/player.html#${window.btoa(
                 currentEpisode
               )}`}

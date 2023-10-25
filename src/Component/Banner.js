@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './Stylesheet/banner.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Page/Loading';
 
 function Banner() {
   const [anime, setAnime] = useState([]);
+  const [loading, setLoading] = useState([true]);
 
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +18,7 @@ function Banner() {
           Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
+      setLoading(false);
     }
     fetchData();
   }, []);
@@ -23,6 +26,7 @@ function Banner() {
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
   }
+
   const navigate = useNavigate();
   function handleClicks(id, title) {
     console.log('CLICK', id);
@@ -30,6 +34,9 @@ function Banner() {
   }
   function handlePlayClicks(id, title) {
     navigate(`/watch/${title.split(' ').join('-')}-${id}`);
+  }
+  if (loading) {
+    return <Loading />;
   }
   return (
     <header
