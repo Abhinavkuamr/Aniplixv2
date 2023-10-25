@@ -11,6 +11,7 @@ import AnimePlayer from './Page/AnimePlayer';
 import Nav from './Component/Nav';
 import Loading from './Page/Loading';
 import NotFound from './Page/NotFound';
+import Search from './Page/Search';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/' element={<HomeScreen />} />
           <Route path='/info/:animeTitle' element={<AnimeInfo />} />
           <Route path='/watch/:animeTitle' element={<AnimePlayer />} />
+          <Route path='/search/:searchTerm' element={<Search />} />
           {/*Testing purpose Loading screen [remove it]*/}
           <Route path='/loading' element={<Loading />}></Route>
           <Route path='*' element={<NotFound />} />

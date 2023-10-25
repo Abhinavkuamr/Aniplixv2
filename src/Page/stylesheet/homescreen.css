@@ -1,0 +1,5 @@
+@media (max-width: 600px) {
+  .homescreen .row {
+    margin-top: 10px;
+  }
+}

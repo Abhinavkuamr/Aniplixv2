@@ -49,7 +49,7 @@ function AnimeInfo() {
         <div className='animeinfo__contents'>
           <img className='animeinfo__image' src={anime?.image} />
           <div className='animeinfo__texts'>
-            <h1>
+            <h1 className='animeinfo__text'>
               {anime?.title?.english ||
                 anime?.title?.romaji ||
                 anime?.title?.native}

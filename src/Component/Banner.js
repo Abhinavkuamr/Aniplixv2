@@ -11,7 +11,7 @@ function Banner() {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(
-        'https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=100'
+        'https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=500'
       );
       setAnime(
         request.data.results[
@@ -37,6 +37,9 @@ function Banner() {
   }
   if (loading) {
     return <Loading />;
+  }
+  if (anime?.cover === undefined) {
+    window.location.reload();
   }
   return (
     <header

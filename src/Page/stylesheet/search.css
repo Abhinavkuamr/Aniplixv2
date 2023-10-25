@@ -1,0 +1,50 @@
+.searchpage {
+  color: crimson;
+}
+
+.searchpage__contents {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchpage__h5 {
+  padding: 100px;
+}
+
+.searchpage__row {
+  color: white;
+  margin-left: 20px;
+}
+
+.searchpage__row__posters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust this property as needed */
+  padding: 20px;
+  gap: 20px;
+}
+
+.searchpage__row__posters::-webkit-scrollbar {
+  display: none;
+}
+
+.searchpage__row__poster {
+  max-height: 230px;
+  object-fit: contain;
+  margin-right: 210px;
+  width: 100%;
+  transition: transform 450ms;
+}
+
+.searchpage__row__poster:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.poster-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

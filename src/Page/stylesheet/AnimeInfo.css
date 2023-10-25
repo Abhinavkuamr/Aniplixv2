@@ -114,3 +114,22 @@
   height: 150px;
   overflow-y: scroll;
 }
+
+@media (max-width: 600px) {
+  .animeinfo__contents {
+    flex-direction: column;
+    padding: 80px 37px;
+    align-items: center;
+    justify-content: center;
+  }
+  .animeinfo {
+    height: 900px;
+  }
+  .animeinfo__texts {
+    max-width: 90%;
+    padding-left: 20px;
+  }
+  .animeinfo__row__posters {
+    justify-content: center;
+  }
+}
