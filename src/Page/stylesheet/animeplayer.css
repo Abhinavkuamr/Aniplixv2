@@ -145,3 +145,35 @@
   z-index: 2;
   position: relative;
 }
+
+@media (max-width: 600px) {
+  .animeplayer__contents {
+    flex-direction: column;
+  }
+  .animeplayer__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 0px;
+    padding-top: 30px;
+    position: relative;
+    top: 590px;
+    z-index: 100;
+  }
+  .animeplayer__iframe iframe {
+    max-width: 100%;
+  }
+  .animeplayer__row__poster {
+    justify-content: center;
+    max-height: 191px;
+    width: 128px;
+  }
+  .animeplayer__row__posters {
+    justify-content: center;
+  }
+  .animeplayer__episodes {
+    order: 2;
+    margin-top: 44px;
+  }
+}
