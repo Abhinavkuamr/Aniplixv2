@@ -112,6 +112,9 @@ function Nav() {
             {suggestions?.slice(0, 2).map((element) => (
               <>
                 <Link
+                  style={{
+                    color: 'white',
+                  }}
                   to={`/info/${element.title.romaji.split(' ').join('-')}-${
                     element.id
                   }`}
@@ -122,7 +125,10 @@ function Nav() {
                       className='nav__suggestion_image'
                       src={`${element.image}`}
                     />
-                    <h1 className='nav__suggestion_text'>
+                    <h1
+                      style={{ fontSize: '17px' }}
+                      className='nav__suggestion_text'
+                    >
                       {truncate(
                         `${element.title.english || element.title.romaji}`,
                         20
@@ -132,8 +138,14 @@ function Nav() {
                 </Link>
               </>
             ))}
-            <Link to={`/search/${inputValue}`} onClick={onSubmit}>
-              <div className='nav__viewmore'>
+            <Link
+              style={{
+                color: 'white',
+              }}
+              to={`/search/${inputValue}`}
+              onClick={onSubmit}
+            >
+              <div className='nav__viewmore' style={{ textAlign: 'center' }}>
                 <u>{suggestions?.length > 0 && <h5>view more</h5>}</u>
               </div>
             </Link>
