@@ -133,7 +133,7 @@ function AnimePlayer() {
             <iframe
               scrolling='no'
               ref={iframeRef}
-              src={`https://aniplix-v2.vercel.app/loading`}
+              src={`https://loadingscreen.vercel.app/`}
               allowFullScreen
               width={'700px'}
               height={'438px'}
