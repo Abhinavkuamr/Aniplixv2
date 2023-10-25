@@ -10,6 +10,7 @@ function AnimePlayer() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [selectedEpisode, setSelectedEpisode] = useState(null); // State for the selected episode
+  const iframeRef = useRef(null);
   const episodesPerPage = 10; // Number of episodes to display per page
   let location = useLocation();
   const buttonRef = useRef(null); // Create a ref for the first button
@@ -45,14 +46,22 @@ function AnimePlayer() {
 
   async function handleButtonClick(ep_id) {
     //create the final link
-    setLoading(true);
+    if (iframeRef.current) {
+      iframeRef.current.src = 'https://aniplix-v2.vercel.app/loading';
+    }
     const response = await axios.get(
       `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
     );
     const ep_link = response.data.sources;
     console.log('here', ep_link[3]);
     SetCurrentEpisode(ep_link[3].url);
-    setLoading(false);
+    console.log('Current episode', currentEpisode);
+    if (iframeRef.current) {
+      iframeRef.current.src = `https://plyr.link/p/player.html#${window.btoa(
+        ep_link[3].url
+      )}`;
+    }
+
     setSelectedEpisode(ep_id);
   }
   const indexOfLastEpisode = currentPage * episodesPerPage;
@@ -113,9 +122,8 @@ function AnimePlayer() {
           </div>
           <div className='animeplayer__iframe'>
             <iframe
-              src={`https://plyr.link/p/player.html#${window.btoa(
-                currentEpisode
-              )}`}
+              ref={iframeRef}
+              src={`https://aniplix-v2.vercel.app/loading`}
               allowFullScreen
               width={'700px'}
               height={'438px'}
