@@ -47,7 +47,7 @@ function AnimePlayer() {
   async function handleButtonClick(ep_id) {
     //create the final link
     if (iframeRef.current) {
-      iframeRef.current.src = 'https://aniplix-v2.vercel.app/loading';
+      iframeRef.current.src = 'https://loadingscreen.vercel.app/';
     }
     const response = await axios.get(
       `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
