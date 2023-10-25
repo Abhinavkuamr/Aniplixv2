@@ -16,6 +16,7 @@ function AnimeInfo() {
 
   useEffect(() => {
     console.log(anime_id);
+    window.scrollTo(0, 0);
     async function fetchAnime() {
       const response = await axios.get(
         `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}`

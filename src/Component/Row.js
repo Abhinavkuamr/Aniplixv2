@@ -31,6 +31,7 @@ function Row({ title, fetchUrl }) {
                   key={anime.id}
                   src={anime.image}
                 ></img>
+                {/*<p>{anime.title.english}</p>*/}
               </Link>
             )
         )}
