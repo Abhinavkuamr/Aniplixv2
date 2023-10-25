@@ -149,6 +149,7 @@
 @media (max-width: 600px) {
   .animeplayer__contents {
     flex-direction: column;
+    margin-top: 88px;
   }
   .animeplayer__pagination {
     display: flex;
@@ -156,7 +157,7 @@
     align-items: center;
     flex-direction: row;
     padding-left: 0px;
-    padding-top: 30px;
+    padding-top: 5px;
     position: relative;
     top: 590px;
     z-index: 100;
