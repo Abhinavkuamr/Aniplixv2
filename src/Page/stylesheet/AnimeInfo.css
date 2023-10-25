@@ -85,6 +85,7 @@
 
 .animeinfo__row__posters {
   display: flex;
+  flex-direction: row;
   overflow-y: hidden;
   overflow-x: scroll;
   flex-wrap: wrap;
@@ -123,13 +124,15 @@
     justify-content: center;
   }
   .animeinfo {
-    height: 900px;
+    height: 950px;
   }
   .animeinfo__texts {
     max-width: 90%;
     padding-left: 20px;
   }
-  .animeinfo__row__posters {
+  .animeinfo__row__poster {
     justify-content: center;
+    max-height: 100px;
+    width: 89px;
   }
 }
