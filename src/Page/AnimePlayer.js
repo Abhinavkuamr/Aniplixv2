@@ -96,8 +96,13 @@ function AnimePlayer() {
             Prev
           </button>
           <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={indexOfLastEpisode >= anime.length}
+            onClick={() => {
+              // Check if there are more episodes to display
+              if (currentEpisodes.length === episodesPerPage) {
+                setCurrentPage(currentPage + 1);
+              }
+            }}
+            disabled={currentEpisodes.length < episodesPerPage}
           >
             Next
           </button>
@@ -122,6 +127,7 @@ function AnimePlayer() {
           </div>
           <div className='animeplayer__iframe'>
             <iframe
+              scrolling='no'
               ref={iframeRef}
               src={`https://aniplix-v2.vercel.app/loading`}
               allowFullScreen

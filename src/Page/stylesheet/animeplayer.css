@@ -6,7 +6,7 @@
   color: white;
 }
 
-/*.animeplayer__pagination_episode {
+.animeplayer__pagination_episode {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,15 +14,16 @@
   z-index: 2;
   position: relative;
 }
-*/
+
 .animeplayer__pagination {
-  padding-left: 260px;
+  padding-left: 220px;
   z-index: 2;
   position: relative;
   top: 100px;
 }
 
 .animeplayer__pagination button {
+  transition: all 0.2s;
   cursor: pointer;
   color: white;
   outline: none;
@@ -36,6 +37,9 @@
   padding-top: 0.5rem;
   background-color: rgba(51, 51, 51, 0.5);
   padding-bottom: 0.5rem;
+}
+.animeplayer__pagination button:hover {
+  background-color: crimson;
 }
 
 .animeplayer__contents {
