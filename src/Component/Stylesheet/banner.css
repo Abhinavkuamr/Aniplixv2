@@ -66,4 +66,7 @@
   .banner__description {
     max-width: 80%;
   }
+  .banner__title {
+    font-size: 20px;
+  }
 }
