@@ -127,9 +127,12 @@
     height: 950px;
   }
   .animeinfo__texts {
+    padding-top: 20px;
     max-width: 90%;
     padding-left: 20px;
+    text-align: center;
   }
+
   .animeinfo__row__poster {
     justify-content: center;
     max-height: 191px;
@@ -137,5 +140,8 @@
   }
   .animeinfo__row__posters {
     justify-content: center;
+  }
+  .animeinfo__button {
+    margin-left: 26px;
   }
 }
