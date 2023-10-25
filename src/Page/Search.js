@@ -8,7 +8,7 @@ function Search() {
   return (
     <div className='searchpage'>
       <div className='searchpage__contents'>
-        <h2 className='searchpage__h5'>Search contents</h2>
+        <h2 className='searchpage__h5'>Search Results</h2>
         <div className='searchpage__row'>
           <div className='searchpage__row__posters'>
             {anime.map(
