@@ -135,4 +135,7 @@
     max-height: 191px;
     width: 128px;
   }
+  .animeinfo__row__posters {
+    justify-content: center;
+  }
 }
