@@ -21,6 +21,7 @@ function AnimePlayer() {
     .splice(-1)[0]; //get the last part of path
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     console.log(anime_id);
     async function fetchAnime() {
       const response = await axios.get(
