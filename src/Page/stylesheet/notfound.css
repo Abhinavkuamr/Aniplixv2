@@ -1,0 +1,14 @@
+.notfound {
+  height: 100vh;
+  color: crimson;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound__logo {
+  height: 200px;
+}
+
+.notfound__h1 {
+}

@@ -10,6 +10,7 @@ import AnimeInfo from './Page/AnimeInfo';
 import AnimePlayer from './Page/AnimePlayer';
 import Nav from './Component/Nav';
 import Loading from './Page/Loading';
+import NotFound from './Page/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/watch/:animeTitle' element={<AnimePlayer />} />
           {/*Testing purpose Loading screen [remove it]*/}
           <Route path='/loading' element={<Loading />}></Route>
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </>

@@ -16,6 +16,8 @@
   font-size: 3rem;
   font-weight: 800;
   padding-bottom: 0.3rem;
+  -webkit-text-stroke-width: 0.6px;
+  -webkit-text-stroke-color: black;
 }
 
 .banner__description {
@@ -25,6 +27,8 @@
   font-size: 0.8rem;
   max-width: 360px;
   height: 80px;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-text-stroke-color: black;
 }
 
 .banner--fadeBottom {

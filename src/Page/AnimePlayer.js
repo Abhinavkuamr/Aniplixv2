@@ -58,7 +58,11 @@ function AnimePlayer() {
     console.log('Current episode', currentEpisode);
     if (iframeRef.current) {
       iframeRef.current.src = `https://plyr.link/p/player.html#${window.btoa(
-        ep_link[3].url
+        ep_link[3].url ||
+          ep_link[4].url ||
+          ep_link[2].url ||
+          ep_link[1].url ||
+          ep_link[5].url
       )}`;
     }
 
