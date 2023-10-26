@@ -5,6 +5,14 @@ import { useLocation, Link, useNavigate } from 'react-router-dom';
 function Search() {
   const location = useLocation();
   const navigate = useNavigate();
+  const closeSuggestions = () => {
+    const search = document.querySelector('.search');
+    search.classList.remove('active');
+  };
+  function onSubmit(e) {
+    e.preventDefault();
+    closeSuggestions();
+  }
   if (
     location.state === null &&
     location.pathname.split('/').splice(-1)[0] != null
