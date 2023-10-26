@@ -34,6 +34,9 @@ function AnimeInfo() {
   if (loading) {
     return <Loading />;
   }
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
+  }
   return (
     <>
       <div
@@ -84,11 +87,21 @@ function AnimeInfo() {
                   }`}
                   onClick={() => setLoading(true)}
                 >
-                  <img
-                    className={`animeinfo__row__poster`}
-                    key={anime.id}
-                    src={anime.image}
-                  />
+                  <div className='animeinfo__poster-container'>
+                    <img
+                      className={`row__poster`}
+                      key={anime.id}
+                      src={anime.image}
+                    ></img>
+                    {
+                      <p className='animeinfo__overlay-text'>
+                        {truncate(
+                          `${anime.title.english || anime.title.romaji}`,
+                          20
+                        )}
+                      </p>
+                    }
+                  </div>
                 </Link>
               )
           )}

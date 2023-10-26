@@ -26,3 +26,25 @@
   transform: scale(1.08);
   opacity: 1;
 }
+
+.row__poster-container {
+  position: relative;
+  display: inline-block; /* or display: block; depending on your layout */
+}
+
+.overlay-text {
+  position: absolute;
+  font-size: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Add a background color or use any other style you prefer */
+  color: #fff; /* Text color */
+  padding: 5px; /* Adjust the padding as needed */
+  margin: 0;
+  z-index: 1; /* Ensure the text appears on top of the image */
+}

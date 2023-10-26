@@ -78,6 +78,9 @@ function AnimePlayer() {
   if (loading) {
     return <Loading />;
   }
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
+  }
 
   return (
     <>
@@ -154,11 +157,21 @@ function AnimePlayer() {
                     anime.id
                   }`}
                 >
-                  <img
-                    className={`animeplayer__row__poster`}
-                    key={anime.id}
-                    src={anime.image}
-                  />
+                  <div className='animeplayer__poster-container'>
+                    <img
+                      className={`row__poster`}
+                      key={anime.id}
+                      src={anime.image}
+                    ></img>
+                    {
+                      <p className='animeplayer__overlay-text'>
+                        {truncate(
+                          `${anime.title.english || anime.title.romaji}`,
+                          20
+                        )}
+                      </p>
+                    }
+                  </div>
                 </Link>
               )
           )}

@@ -116,6 +116,29 @@
   overflow-y: scroll;
 }
 
+.animeinfo__poster-container {
+  position: relative;
+  display: inline-block; /* or display: block; depending on your layout */
+  width: 190px;
+}
+
+.animeinfo__overlay-text {
+  position: absolute;
+  font-size: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Add a background color or use any other style you prefer */
+  color: #fff; /* Text color */
+  padding: 5px; /* Adjust the padding as needed */
+  margin: 0;
+  z-index: 1; /* Ensure the text appears on top of the image */
+}
+
 @media (max-width: 600px) {
   .animeinfo__contents {
     flex-direction: column;
@@ -139,5 +162,9 @@
   }
   .animeinfo__row__posters {
     justify-content: center;
+  }
+  .animeinfo__poster-container {
+    width: 150px;
+    margin-right: 7px;
   }
 }

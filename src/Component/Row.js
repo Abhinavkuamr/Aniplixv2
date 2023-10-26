@@ -14,6 +14,9 @@ function Row({ title, fetchUrl }) {
     fetchData();
   }, [fetchUrl]);
   console.log(anime);
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
+  }
   return (
     <div className='row'>
       <h1>{title}</h1>
@@ -26,12 +29,21 @@ function Row({ title, fetchUrl }) {
                   anime.id
                 }`}
               >
-                <img
-                  className={`row__poster`}
-                  key={anime.id}
-                  src={anime.image}
-                ></img>
-                {/*<p>{anime.title.english}</p>*/}
+                <div className='row__poster-container'>
+                  <img
+                    className={`row__poster`}
+                    key={anime.id}
+                    src={anime.image}
+                  ></img>
+                  {
+                    <p className='overlay-text'>
+                      {truncate(
+                        `${anime.title.english || anime.title.romaji}`,
+                        20
+                      )}
+                    </p>
+                  }
+                </div>
               </Link>
             )
         )}
