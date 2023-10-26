@@ -12,11 +12,13 @@ import Nav from './Component/Nav';
 import Loading from './Page/Loading';
 import NotFound from './Page/NotFound';
 import Search from './Page/Search';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
     <>
       <div className='app'>
+        <Analytics />
         <Nav></Nav>
 
         <Routes>
