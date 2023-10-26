@@ -23,7 +23,7 @@
 .searchpage__row__posters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Adjust this property as needed */
+  justify-content: center; /* Adjust this property as needed */
   padding: 20px;
   gap: 20px;
 }
@@ -51,10 +51,37 @@
   text-align: center;
 }
 
+.searchpage__poster-container {
+  position: relative;
+  display: inline-block; /* or display: block; depending on your layout */
+  width: 190px;
+}
+
+.searchpage__overlay-text {
+  position: absolute;
+  font-size: 10px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Add a background color or use any other style you prefer */
+  color: #fff; /* Text color */
+  padding: 5px; /* Adjust the padding as needed */
+  margin: 0;
+  z-index: 1; /* Ensure the text appears on top of the image */
+}
+
 @media (max-width: 600px) {
   .searchpage__row__poster {
     margin-right: 3px;
     width: 100px;
     max-height: 180px;
+  }
+  .searchpage__poster-container {
+    width: 100px;
+    margin-right: 7px;
   }
 }

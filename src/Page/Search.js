@@ -5,6 +5,9 @@ import { useLocation, Link } from 'react-router-dom';
 function Search() {
   const location = useLocation();
   const anime = location.state.suggestions;
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
+  }
   return (
     <div className='searchpage'>
       <div className='searchpage__contents'>
@@ -21,15 +24,20 @@ function Search() {
                     key={anime.id}
                     style={{ color: 'white' }}
                   >
-                    <div className='poster-container'>
+                    <div className='searchpage__poster-container'>
                       <img
-                        className='searchpage__row__poster'
+                        className={`searchpage__row__poster`}
+                        key={anime.id}
                         src={anime.image}
-                        alt={anime.title.english || anime.title.romaji}
-                      />
-                      <p className='poster-text'>
-                        {anime.title.english || anime.title.romaji}
-                      </p>
+                      ></img>
+                      {
+                        <p className='searchpage__overlay-text'>
+                          {truncate(
+                            `${anime.title.english || anime.title.romaji}`,
+                            20
+                          )}
+                        </p>
+                      }
                     </div>
                   </Link>
                 )
