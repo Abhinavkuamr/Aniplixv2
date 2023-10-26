@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './stylesheet/search.css';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 
 function Search() {
   const location = useLocation();
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const closeSuggestions = () => {
     const search = document.querySelector('.search');
     search.classList.remove('active');
