@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import './stylesheet/search.css';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 
 function Search() {
   const location = useLocation();
-  const anime = location.state.suggestions;
+  const navigate = useNavigate();
+  if (
+    location.state === null &&
+    location.pathname.split('/').splice(-1)[0] != null
+  ) {
+    console.log(location.pathname.split('/').splice(-1)[0]);
+    window.location.href = '/wrong-page-mate';
+  }
+  const anime = location.state?.suggestions;
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
   }
