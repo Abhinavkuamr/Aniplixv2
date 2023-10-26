@@ -40,6 +40,8 @@ function AnimeInfo() {
   return (
     <>
       <div
+        data-aos='fade-down'
+        data-aos-once='true'
         className='animeinfo'
         style={{
           backgroundImage: `url(${anime?.cover})`,

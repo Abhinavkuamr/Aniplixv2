@@ -92,6 +92,8 @@ function AnimePlayer() {
           backgroundSize: 'cover',
           position: 'relative',
         }}
+        data-aos='fade-down'
+        data-aos-once='true'
       >
         <div className='animeplayer__veil' />
         {/*<div className='animeplayer__pagination_episode'> </div>*/}

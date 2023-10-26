@@ -43,6 +43,8 @@ function Banner() {
   }
   return (
     <header
+      data-aos='fade-down'
+      data-aos-once='true'
       className='banner'
       style={{
         backgroundSize: 'cover',

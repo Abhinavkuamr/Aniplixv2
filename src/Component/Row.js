@@ -20,7 +20,7 @@ function Row({ title, fetchUrl }) {
   return (
     <div className='row'>
       <h1>{title}</h1>
-      <div className='row__posters'>
+      <div className='row__posters' data-aos='slide-right' data-aos-once='true'>
         {anime.map(
           (anime) =>
             anime.image && (
