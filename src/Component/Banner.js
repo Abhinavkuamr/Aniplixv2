@@ -38,7 +38,7 @@ function Banner() {
   if (loading) {
     return <Loading />;
   }
-  if (anime?.cover === undefined) {
+  if (anime?.cover === undefined || anime?.id === 97940) {
     window.location.reload();
   }
   return (
