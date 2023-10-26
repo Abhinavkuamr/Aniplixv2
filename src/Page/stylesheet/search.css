@@ -1,5 +1,7 @@
 .searchpage {
   color: crimson;
+  background-color: black;
+  height: 100%;
 }
 
 .searchpage__contents {

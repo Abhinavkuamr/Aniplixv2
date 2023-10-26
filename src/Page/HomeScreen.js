@@ -11,15 +11,15 @@ export default function HomeScreen() {
 
       <Row
         title='ANIME TRENDING'
-        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/trending?perPage=10'
+        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/trending?perPage=100'
       />
       <Row
         title='ANIME POPULAR'
-        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=10'
+        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=100'
       />
       <Row
         title='ANIME RECENT'
-        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/recent?perPage=10'
+        fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/recent?perPage=100'
       />
 
       {/*<Row 
