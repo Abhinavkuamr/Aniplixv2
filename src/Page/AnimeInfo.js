@@ -68,6 +68,7 @@ function AnimeInfo() {
             <h4>Released: {anime?.releaseDate}</h4>
             <h4>Total episodes: {anime?.totalEpisodes}</h4>
             <h4>Studio: {anime?.studios}</h4>
+            <h4>Genre: {anime?.genres?.join(', ')}</h4>
           </div>
         </div>
       </div>
