@@ -25,7 +25,7 @@ function AnimePlayer() {
     console.log(anime_id);
     async function fetchAnime() {
       const response = await axios.get(
-        `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}`
+        `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}?provider=gogoanime`
       );
       setAnime(response.data);
       setLoading(false);
