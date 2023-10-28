@@ -46,12 +46,20 @@ function AnimePlayer() {
   }, []);
 
   async function handleButtonClick(ep_id) {
+    let sub_id = ep_id;
+    let dub_id = sub_id
+      .split('-')
+      .map((part, index, array) =>
+        index === array.length - 2 ? 'dub-episode' : part
+      )
+      .join('-');
+
     //create the final link
     if (iframeRef.current) {
       iframeRef.current.src = 'https://loadingscreen.vercel.app/';
     }
     const response = await axios.get(
-      `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
+      `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${sub_id}`
     );
     const ep_link = response.data.sources;
     console.log('here', ep_link[3]);
