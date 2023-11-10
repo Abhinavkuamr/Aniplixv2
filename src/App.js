@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import HomeScreen from './Page/HomeScreen';
 import {
@@ -13,6 +13,7 @@ import Loading from './Page/Loading';
 import NotFound from './Page/NotFound';
 import Search from './Page/Search';
 import { Analytics } from '@vercel/analytics/react';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   return (

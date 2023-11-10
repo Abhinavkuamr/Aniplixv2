@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './stylesheet/homescreen.css';
 import Nav from '../Component/Nav';
 import Banner from '../Component/Banner';
 import Row from '../Component/Row';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function HomeScreen() {
+  const [showToasts, setShowToasts] = useState(false);
+  const notify = () =>
+    toast('We are aware of the issue with One-piece and Black clover Animes.');
+
+  const notify2 = () =>
+    toast(
+      'Aniplix v3.0 will be deployed soon. (fixing all the issues) Sorry for the Inconvenience. :)'
+    );
+
+  useEffect(() => {
+    const hasShownToasts = localStorage.getItem('shownToasts');
+    if (!hasShownToasts) {
+      notify2();
+      notify();
+      setShowToasts(true);
+      localStorage.setItem('shownToasts', 'true'); // Store in local storage to remember that toasts have been shown
+    }
+  }, []);
   return (
     <div className='homescreen'>
+      <div>
+        <Toaster />
+      </div>
       <Banner />
 
       <Row
