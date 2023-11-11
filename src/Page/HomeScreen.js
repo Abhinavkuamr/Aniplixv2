@@ -17,11 +17,17 @@ export default function HomeScreen() {
 
   useEffect(() => {
     const hasShownToasts = localStorage.getItem('shownToasts');
-    if (!hasShownToasts) {
+    const lastToastTime = localStorage.getItem('lastToastTime');
+
+    // Check if toasts have not been shown or if it's been more than 1 hour since the last toast
+    if (!hasShownToasts || (lastToastTime && Date.now() - lastToastTime > 3600000)) {
       notify2();
       notify();
       setShowToasts(true);
-      localStorage.setItem('shownToasts', 'true'); // Store in local storage to remember that toasts have been shown
+      
+      // Store in local storage to remember that toasts have been shown and update the last toast time
+      localStorage.setItem('shownToasts', 'true');
+      localStorage.setItem('lastToastTime', Date.now().toString());
     }
   }, []);
   return (
