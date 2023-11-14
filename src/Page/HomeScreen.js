@@ -4,11 +4,15 @@ import Nav from '../Component/Nav';
 import Banner from '../Component/Banner';
 import Row from '../Component/Row';
 import toast, { Toaster } from 'react-hot-toast';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 export default function HomeScreen() {
   const [showToasts, setShowToasts] = useState(false);
   const notify = () =>
-    toast('We are aware of the issue with One-piece and Black clover Animes.');
+    toast(
+      'We are aware of the issue with One-piece and Black clover Animes and some UI bugs'
+    );
 
   const notify2 = () =>
     toast(
@@ -20,11 +24,14 @@ export default function HomeScreen() {
     const lastToastTime = localStorage.getItem('lastToastTime');
 
     // Check if toasts have not been shown or if it's been more than 1 hour since the last toast
-    if (!hasShownToasts || (lastToastTime && Date.now() - lastToastTime > 3600000)) {
+    if (
+      !hasShownToasts ||
+      (lastToastTime && Date.now() - lastToastTime > 3600000)
+    ) {
       notify2();
       notify();
       setShowToasts(true);
-      
+
       // Store in local storage to remember that toasts have been shown and update the last toast time
       localStorage.setItem('shownToasts', 'true');
       localStorage.setItem('lastToastTime', Date.now().toString());
