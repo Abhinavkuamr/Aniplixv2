@@ -29,7 +29,8 @@ function Row({ title, fetchUrl }) {
       <h1>{title}</h1>
       <div className='row__posters' data-aos='slide-right' data-aos-once='true'>
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Scrollbar]}
+          Scrollbar={{ draggable: true }}
           breakpoints={{
             // when window width is >= 640px
             200: {
