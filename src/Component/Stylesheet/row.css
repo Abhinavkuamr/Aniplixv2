@@ -48,3 +48,28 @@
   margin: 0;
   z-index: 1; /* Ensure the text appears on top of the image */
 }
+
+.swiper-nav-btns {
+  position: absolute;
+  top: 0px;
+  right: 0px; /* Adjust the position as needed */
+  z-index: 1000; /* Ensure it's above the Swiper */
+}
+.swiper-nav-btn {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgba(51, 51, 51, 0.8);
+  padding-bottom: 0.5rem;
+}
+
+.swiper-nav-btn:hover {
+  color: black;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}

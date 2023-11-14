@@ -4,8 +4,6 @@ import Nav from '../Component/Nav';
 import Banner from '../Component/Banner';
 import Row from '../Component/Row';
 import toast, { Toaster } from 'react-hot-toast';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 
 export default function HomeScreen() {
   const [showToasts, setShowToasts] = useState(false);
