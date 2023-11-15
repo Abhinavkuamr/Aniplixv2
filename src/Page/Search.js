@@ -27,7 +27,7 @@ function Search() {
       }
     }
     fetchAnime(queryParam.search);
-  }, []);
+  }, [queryParam.search]);
   const closeSuggestions = () => {
     const search = document.querySelector('.search');
     search.classList.remove('active');
