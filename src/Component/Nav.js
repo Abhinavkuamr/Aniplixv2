@@ -76,6 +76,7 @@ function Nav() {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
+    setSuggestions([]);
     navigate(`/search?search=${inputValue}`, { state: { suggestions } });
     activate(false);
   };

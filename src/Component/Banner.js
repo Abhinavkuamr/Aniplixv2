@@ -16,11 +16,10 @@ function Banner() {
       const rand = Math.floor(Math.random() * request.data.results.length - 4);
       const banner_toShow = request.data.results[rand];
 
-      console.log('BANNNNERRRRRRRRR', request.data.results);
-      console.log('BANNNNNNNN num', rand);
-      console.log('BANNNNNNNN num', banner_toShow);
-
-      if (banner_toShow.id === '21' || banner_toShow.id === '97940') {
+      if (
+        (banner_toShow && banner_toShow.id === '21') ||
+        banner_toShow.id === '97940'
+      ) {
         const request = await axios.get(
           'https://aniplix-scraper.vercel.app/meta/anilist/info/145064'
         );
