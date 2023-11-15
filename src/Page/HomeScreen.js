@@ -76,10 +76,52 @@ export default function HomeScreen() {
           title='Slice of Life Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Slice of Life%22]'
         />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <iframe
+            data-aa='2277399'
+            src='//ad.a-ads.com/2277399?size=728x90'
+            style={{
+              width: '728px',
+              height: '90px',
+              border: '0px',
+              padding: '0',
+              overflow: 'hidden',
+              backgroundColor: 'transparent',
+            }}
+          ></iframe>
+        </div>
+
         <Row
           title='Romance Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Romance%22]'
         />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignContent: 'center',
+          }}
+        >
+          <iframe
+            data-aa='2277399'
+            src='//ad.a-ads.com/2277399?size=728x90'
+            style={{
+              width: '728px',
+              height: '90px',
+              border: '0px',
+              padding: '0',
+              overflow: 'hidden',
+              backgroundColor: 'transparent',
+            }}
+          ></iframe>
+        </div>
+
         <Row
           title='Psychological Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Psychological%22]'
