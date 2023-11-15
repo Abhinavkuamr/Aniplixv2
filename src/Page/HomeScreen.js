@@ -51,126 +51,26 @@ export default function HomeScreen() {
           title='Popular Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=100'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Slice of Life Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Slice of Life%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Romance Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Romance%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Psychological Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Psychological%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Action Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Action%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Supernatural Anime'
@@ -181,26 +81,6 @@ export default function HomeScreen() {
           title='Adventure Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Adventure%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Sci-Fi Anime'
@@ -210,51 +90,11 @@ export default function HomeScreen() {
           title='Comedy ANIME'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Comedy%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='Fantasy ANIME'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Fantasy%22]'
         />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignContent: 'center',
-          }}
-        >
-          <iframe
-            data-aa='2277399'
-            src='//ad.a-ads.com/2277399?size=728x90'
-            style={{
-              width: '728px',
-              height: '90px',
-              border: '0px',
-              padding: '0',
-              overflow: 'hidden',
-              backgroundColor: 'transparent',
-            }}
-          ></iframe>
-        </div>
 
         <Row
           title='ANIME RECENT'
