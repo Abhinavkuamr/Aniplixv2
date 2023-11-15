@@ -1,13 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './stylesheet/search.css';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Search() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [anime, setAnime] = useState([]);
+
+  const urlsearchParam = new URLSearchParams(location.search);
+  const queryParam = {};
+  for (const [key, value] of urlsearchParam.entries()) {
+    queryParam[key] = value;
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    async function fetchAnime(search) {
+      try {
+        const response = await axios.get(
+          `https://aniplix-scraper.vercel.app/anime/gogoanime/${search}`
+        );
+        setAnime(response.data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchAnime(queryParam.search);
+  }, []);
   const closeSuggestions = () => {
     const search = document.querySelector('.search');
     search.classList.remove('active');
@@ -16,14 +36,7 @@ function Search() {
     e.preventDefault();
     closeSuggestions();
   }
-  if (
-    location.state === null &&
-    location.pathname.split('/').splice(-1)[0] != null
-  ) {
-    console.log(location.pathname.split('/').splice(-1)[0]);
-    window.location.href = '/wrong-page-mate';
-  }
-  const anime = location.state?.suggestions;
+
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
   }
@@ -33,13 +46,11 @@ function Search() {
         <h2 className='searchpage__h5'>Search Results</h2>
         <div className='searchpage__row'>
           <div className='searchpage__row__posters'>
-            {anime.map(
+            {anime?.map(
               (anime) =>
                 anime.image && (
                   <Link
-                    to={`/info/${anime.title.romaji.split(' ').join('-')}-${
-                      anime.id
-                    }`}
+                    to={`/info/${anime.title}?provider=gogoanime&id=${anime.id}`}
                     key={anime.id}
                     style={{ color: 'white' }}
                   >
@@ -51,10 +62,7 @@ function Search() {
                       ></img>
                       {
                         <p className='searchpage__overlay-text'>
-                          {truncate(
-                            `${anime.title.english || anime.title.romaji}`,
-                            20
-                          )}
+                          {truncate(`${anime.title}`, 30)}
                         </p>
                       }
                     </div>

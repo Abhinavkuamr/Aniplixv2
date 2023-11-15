@@ -46,7 +46,7 @@ function Nav() {
     setInputValue(e.target.value);
     try {
       const response = await axios.get(
-        `https://aniplix-scraper.vercel.app/meta/anilist/${e.target.value}`
+        `https://aniplix-scraper.vercel.app/anime/gogoanime/${e.target.value}`
       );
       setSuggestions(response.data.results);
     } catch {
@@ -76,7 +76,7 @@ function Nav() {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${inputValue}`, { state: { suggestions } });
+    navigate(`/search?search=${inputValue}`, { state: { suggestions } });
     activate(false);
   };
 
@@ -108,16 +108,14 @@ function Nav() {
             </button>
           </form>
           <div className='nav__suggestions'>
-            {/*This will come inside loop*/}
+            {console.log(suggestions)}
             {suggestions?.slice(0, 2).map((element) => (
               <>
                 <Link
                   style={{
                     color: 'white',
                   }}
-                  to={`/info/${element.title.romaji.split(' ').join('-')}-${
-                    element.id
-                  }`}
+                  to={`/info/${element.title}?provider=gogoanime&id=${element.id}&episode=""`}
                   onClick={handleSuggestionClick}
                 >
                   <div className='nav__suggestion__content'>
@@ -129,10 +127,7 @@ function Nav() {
                       style={{ fontSize: '17px' }}
                       className='nav__suggestion_text'
                     >
-                      {truncate(
-                        `${element.title.english || element.title.romaji}`,
-                        20
-                      )}
+                      {truncate(`${element.title}`, 20)}
                     </h1>
                   </div>
                 </Link>
@@ -142,7 +137,7 @@ function Nav() {
               style={{
                 color: 'white',
               }}
-              to={`/search/${inputValue}`}
+              to={`/search?search=${inputValue}`}
               onClick={onSubmit}
             >
               <div className='nav__viewmore' style={{ textAlign: 'center' }}>

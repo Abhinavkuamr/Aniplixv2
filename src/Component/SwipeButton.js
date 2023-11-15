@@ -6,10 +6,10 @@ export default function SwipeButton() {
   return (
     <div className='swiper-nav-btns'>
       <button className='swiper-nav-btn' onClick={() => swiper.slidePrev()}>
-        <i class='fa-solid fa-arrow-left'></i>
+        <i class='fa-solid fa-arrow-left fa-beat-fade'></i>{' '}
       </button>
       <button className='swiper-nav-btn' onClick={() => swiper.slideNext()}>
-        <i class='fa-solid fa-arrow-right'></i>
+        <i class='fa-solid fa-arrow-right fa-beat-fade'></i>{' '}
       </button>
     </div>
   );

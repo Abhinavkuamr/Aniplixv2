@@ -26,7 +26,7 @@ function App() {
           <Route path='/' element={<HomeScreen />} />
           <Route path='/info/:animeTitle' element={<AnimeInfo />} />
           <Route path='/watch/:animeTitle' element={<AnimePlayer />} />
-          <Route path='/search/:searchTerm' element={<Search />} />
+          <Route path='/search' element={<Search />} />
           {/*Testing purpose Loading screen [remove it]*/}
           <Route path='/loading' element={<Loading />}></Route>
           <Route path='*' element={<NotFound />} />

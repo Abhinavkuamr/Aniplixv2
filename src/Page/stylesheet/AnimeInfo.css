@@ -25,6 +25,7 @@
   flex-direction: column;
   gap: 10px;
   padding-left: 100px;
+  height: 411px;
 }
 
 .animeinfo__veil {
@@ -167,4 +168,8 @@
     width: 128px;
     margin-right: 7px;
   }
+}
+
+.animeinfo__des::-webkit-scrollbar {
+  display: none;
 }

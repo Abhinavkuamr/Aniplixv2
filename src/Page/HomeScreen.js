@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const [showToasts, setShowToasts] = useState(false);
   const notify = () =>
     toast(
-      'We are aware of the issue with One-piece and Black clover Animes and some UI bugs'
+      'We are aware of some dead-links and UI issues. It will be fixed soon.'
     );
 
   const notify2 = () =>
@@ -26,7 +26,6 @@ export default function HomeScreen() {
       !hasShownToasts ||
       (lastToastTime && Date.now() - lastToastTime > 3600000)
     ) {
-      notify2();
       notify();
       setShowToasts(true);
 
@@ -43,62 +42,73 @@ export default function HomeScreen() {
       <Banner />
       <div>
         <Row
+          title='Recent uploads'
+          fetchUrl='https://aniplix-scraper.vercel.app/anime/gogoanime/recent-episodes'
+          provider='gogoanime'
+        />
+        <Row
           title='Trending Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/trending?perPage=100'
+          provider='anilist'
         />
 
         <Row
           title='Popular Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=100'
+          provider='anilist'
         />
 
         <Row
           title='Slice of Life Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Slice of Life%22]'
+          provider='anilist'
         />
 
         <Row
           title='Romance Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Romance%22]'
+          provider='anilist'
         />
 
         <Row
           title='Psychological Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Psychological%22]'
+          provider='anilist'
         />
 
         <Row
           title='Action Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Action%22]'
+          provider='anilist'
         />
 
         <Row
           title='Supernatural Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Supernatural%22]'
+          provider='anilist'
         />
 
         <Row
           title='Adventure Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Adventure%22]'
+          provider='anilist'
         />
 
         <Row
           title='Sci-Fi Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Sci-Fi%22]'
+          provider='anilist'
         />
         <Row
-          title='Comedy ANIME'
+          title='Comedy Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Comedy%22]'
+          provider='anilist'
         />
 
         <Row
-          title='Fantasy ANIME'
+          title='Fantasy Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Fantasy%22]'
-        />
-
-        <Row
-          title='ANIME RECENT'
-          fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/recent?perPage=100'
+          provider='anilist'
         />
       </div>
 

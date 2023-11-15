@@ -13,11 +13,22 @@ function Banner() {
       const request = await axios.get(
         'https://aniplix-scraper.vercel.app/meta/anilist/popular?perPage=500'
       );
-      setAnime(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
+      const rand = Math.floor(Math.random() * request.data.results.length - 4);
+      const banner_toShow = request.data.results[rand];
+
+      console.log('BANNNNERRRRRRRRR', request.data.results);
+      console.log('BANNNNNNNN num', rand);
+      console.log('BANNNNNNNN num', banner_toShow);
+
+      if (banner_toShow.id === '21' || banner_toShow.id === '97940') {
+        const request = await axios.get(
+          'https://aniplix-scraper.vercel.app/meta/anilist/info/145064'
+        );
+        setAnime(request.data);
+      } else {
+        setAnime(banner_toShow);
+      }
+
       setLoading(false);
     }
     fetchData();
@@ -30,15 +41,15 @@ function Banner() {
   const navigate = useNavigate();
   function handleClicks(id, title) {
     console.log('CLICK', id);
-    navigate(`/info/${title.split(' ').join('-')}-${id}`);
+    navigate(`/info/${title.split(' ').join('-')}-${id}?provider=anilist`);
   }
   function handlePlayClicks(id, title) {
-    navigate(`/watch/${title.split(' ').join('-')}-${id}`);
+    navigate(`/watch/${title.split(' ').join('-')}-${id}?provider=anilist`);
   }
   if (loading) {
     return <Loading />;
   }
-  if (anime?.cover === undefined || anime?.id === 97940) {
+  if (anime?.cover === undefined) {
     window.location.reload();
   }
   return (
@@ -59,17 +70,17 @@ function Banner() {
             anime?.title?.userPreferred}
         </h1>
         <div className='banner__buttons'>
-          <button
+          {/*<button
             onClick={() => handlePlayClicks(anime?.id, anime?.title?.romaji)}
             className='banner_button'
           >
             Play
-          </button>
+          </button>*/}
           <button
             className='banner_button'
             onClick={() => handleClicks(anime?.id, anime?.title?.romaji)}
           >
-            Info
+            Watch <i class='fa-solid fa-eye fa-beat-fade'></i>
           </button>
         </div>
         <h1 className='banner__description'>

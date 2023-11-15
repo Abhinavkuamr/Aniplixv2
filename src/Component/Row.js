@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Stylesheet/row.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
@@ -9,13 +9,24 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import SwipeButton from './SwipeButton';
+import Loading from '../Page/Loading';
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, provider }) {
   const [anime, setAnime] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const [selectedProvider, setProvider] = useState('');
   useEffect(() => {
+    setProvider(provider);
+    let request = '';
     async function fetchData() {
-      const request = await axios.get(fetchUrl);
+      try {
+        request = await axios.get(fetchUrl);
+      } catch (err) {
+        useNavigate.navigate('/wrong-page-mate');
+      }
       setAnime(request.data.results);
+      setLoading([false]);
       return request;
     }
     fetchData();
@@ -24,6 +35,7 @@ function Row({ title, fetchUrl }) {
   function truncate(string, n) {
     return string?.length > n ? string.substr(0, n - 1) + ' ...' : string;
   }
+
   return (
     <div className='row'>
       <h1>{title}</h1>
@@ -54,8 +66,13 @@ function Row({ title, fetchUrl }) {
               anime.id != 21 && (
                 <SwiperSlide>
                   <Link
-                    to={`/info/${anime.title.romaji.split(' ').join('-')}-${
-                      anime.id
+                    onClick={() => setLoading(true)}
+                    to={`${
+                      selectedProvider === 'gogoanime'
+                        ? `/info/${anime.title}?provider=gogoanime&ep=${anime.episodeId}&id=${anime.id}`
+                        : `/info/${anime.title.romaji.split(' ').join('-')}-${
+                            anime.id
+                          }?provider=anilist`
                     }`}
                   >
                     <div className='row__poster-container'>
@@ -67,8 +84,12 @@ function Row({ title, fetchUrl }) {
                       {
                         <p className='overlay-text'>
                           {truncate(
-                            `${anime.title.english || anime.title.romaji}`,
-                            20
+                            `${
+                              selectedProvider === 'gogoanime'
+                                ? anime.title
+                                : anime.title.english || anime.title.romaji
+                            }`,
+                            30
                           )}
                         </p>
                       }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import './stylesheet/animeplayer.css';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import Loading from './Loading';
+import Row from '../Component/Row';
+import bkg from './static/steaming.jpg';
 
 function AnimePlayer() {
   const [anime, setAnime] = useState([]);
@@ -14,22 +16,72 @@ function AnimePlayer() {
   const episodesPerPage = 10; // Number of episodes to display per page
   let location = useLocation();
   const buttonRef = useRef(null); // Create a ref for the first button
-  const anime_id = location.pathname
-    .split('/')
-    .splice(-1)[0]
-    .split('-')
-    .splice(-1)[0]; //get the last part of path
+  const urlsearchParam = new URLSearchParams(location.search);
+  const queryParam = {};
+  const validGenres = [
+    'Action',
+    'Adventure',
+    'Cars',
+    'Comedy',
+    'Drama',
+    'Fantasy',
+    'Horror',
+    'Mahou Shoujo',
+    'Mecha',
+    'Music',
+    'Mystery',
+    'Psychological',
+    'Romance',
+    'Sci-Fi',
+    'Slice of Life',
+    'Sports',
+    'Supernatural',
+    'Thriller',
+  ];
+  for (const [key, value] of urlsearchParam.entries()) {
+    queryParam[key] = value;
+  }
+  console.log(queryParam);
+  let anime_id = '';
+  console.log('CHECK CONDITION', queryParam.id);
+
+  if (queryParam.provider === 'gogoanime') {
+    //keep an EYE
+
+    anime_id = queryParam.id;
+  } else {
+    anime_id = location.pathname
+      .split('/')
+      .splice(-1)[0]
+      .split('-')
+      .splice(-1)[0]; //get the last part of path
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
     console.log(anime_id);
     async function fetchAnime() {
-      const response = await axios.get(
-        `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}?provider=gogoanime`
-      );
+      let response = '';
+      try {
+        if (queryParam.provider === 'gogoanime') {
+          response = await axios.get(
+            `https://aniplix-scraper.vercel.app/anime/gogoanime/info/${anime_id}`
+          );
+        } else {
+          response = await axios.get(
+            `https://aniplix-scraper.vercel.app/meta/anilist/info/${anime_id}?provider=gogoanime`
+          );
+        }
+      } catch (err) {
+        useNavigate.navigate('/wrong-page-mate');
+      }
+
       setAnime(response.data);
       setLoading(false);
-      if (response.data.episodes?.length > 0) {
+      if (queryParam.episode !== 'null') {
+        console.log('EPISODE IS NOT NULL');
+        handleButtonClick(queryParam.episode);
+      } else if (response.data.episodes?.length > 0) {
         handleButtonClick(response.data.episodes[0].id);
       }
     }
@@ -46,37 +98,61 @@ function AnimePlayer() {
   }, []);
 
   async function handleButtonClick(ep_id) {
-    let sub_id = ep_id;
-    let dub_id = sub_id
-      .split('-')
-      .map((part, index, array) =>
-        index === array.length - 2 ? 'dub-episode' : part
-      )
-      .join('-');
-
     //create the final link
     if (iframeRef.current) {
       iframeRef.current.src = 'https://loadingscreen.vercel.app/';
     }
-    const response = await axios.get(
-      `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${sub_id}`
-    );
+    let response = '';
+    try {
+      response = await axios.get(
+        `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
+      );
+    } catch (err) {
+      useNavigate.navigate('/wrong-page-mate');
+    }
     const ep_link = response.data.sources;
-    console.log('here', ep_link[3]);
-    SetCurrentEpisode(ep_link[3].url);
-    console.log('Current episode', currentEpisode);
+    //console.log('here', ep_link[3]);
+    //SetCurrentEpisode(ep_link[3].url);
+    //console.log('Current episode', currentEpisode);
     if (iframeRef.current) {
+      console.log('ALL qualities', ep_link);
       iframeRef.current.src = `https://plyr.link/p/player.html#${window.btoa(
-        ep_link[3].url ||
-          ep_link[4].url ||
-          ep_link[2].url ||
-          ep_link[1].url ||
-          ep_link[5].url
+        ep_link[3]?.url ||
+          ep_link[4]?.url ||
+          ep_link[2]?.url ||
+          ep_link[1]?.url ||
+          ep_link[0]?.url ||
+          ep_link[5]?.url
       )}`;
     }
 
     setSelectedEpisode(ep_id);
+    // Check if anime and anime.episodes are defined
+    if (anime && anime.episodes) {
+      // Calculate the page number based on the clicked episode
+      const episodeIndex = anime.episodes.findIndex(
+        (episode) => episode.id === ep_id
+      );
+      if (episodeIndex !== -1) {
+        const pageNumber = Math.floor(episodeIndex / episodesPerPage) + 1;
+        setCurrentPage(pageNumber);
+      }
+    }
   }
+  useEffect(() => {
+    // Check if anime and anime.episodes are defined
+    if (anime && anime.episodes) {
+      // Calculate the page number based on the clicked episode
+      const episodeIndex = anime.episodes.findIndex(
+        (episode) => episode.id === selectedEpisode
+      );
+      if (episodeIndex !== -1) {
+        const pageNumber = Math.floor(episodeIndex / episodesPerPage) + 1;
+        setCurrentPage(pageNumber);
+      }
+    }
+  }, [selectedEpisode, anime, episodesPerPage]);
+
   const indexOfLastEpisode = currentPage * episodesPerPage;
   const indexOfFirstEpisode = indexOfLastEpisode - episodesPerPage;
   const currentEpisodes = anime?.episodes?.slice(
@@ -95,7 +171,9 @@ function AnimePlayer() {
       <div
         className='animeplayer'
         style={{
-          backgroundImage: `url(${anime?.cover})`,
+          backgroundImage: `url(${
+            queryParam.provider === 'gogoanime' ? bkg : anime?.cover
+          })`,
           backgroundPosition: 'center center',
           backgroundSize: 'cover',
           position: 'relative',
@@ -111,7 +189,7 @@ function AnimePlayer() {
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            Prev
+            Prev List
           </button>
           <button
             onClick={() => {
@@ -122,7 +200,7 @@ function AnimePlayer() {
             }}
             disabled={currentEpisodes.length < episodesPerPage}
           >
-            Next
+            Next List
           </button>
         </div>
         <div className='animeplayer__contents'>
@@ -134,9 +212,7 @@ function AnimePlayer() {
                 onClick={() => handleButtonClick(episode_id.id)}
                 style={{
                   backgroundColor:
-                    selectedEpisode === episode_id.id
-                      ? 'crimson'
-                      : 'rgba(51, 51, 51, 0.5)',
+                    selectedEpisode === episode_id.id && 'crimson',
                 }}
               >
                 {episode_id.id}
@@ -158,35 +234,67 @@ function AnimePlayer() {
       </div>
 
       <div className='animeplayer__row'>
-        <h1>Recommendations</h1>
-        <div className='animeplayer__row__posters'>
-          {anime?.recommendations?.map(
-            (anime) =>
-              anime.image && (
-                <Link
-                  to={`/info/${anime.title.romaji.split(' ').join('-')}-${
-                    anime.id
-                  }`}
-                >
-                  <div className='animeplayer__poster-container'>
-                    <img
-                      className={`row__poster`}
-                      key={anime.id}
-                      src={anime.image}
-                    ></img>
-                    {
-                      <p className='animeplayer__overlay-text'>
-                        {truncate(
-                          `${anime.title.english || anime.title.romaji}`,
-                          20
-                        )}
-                      </p>
-                    }
+        {
+          <>
+            {queryParam.provider === 'gogoanime' ? (
+              <>
+                {
+                  <div>
+                    <Row
+                      title='Recommendation'
+                      fetchUrl={`https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[${validGenres
+                        .filter((genre) => anime?.genres.includes(genre))
+                        ?.map((genre) => `"${genre}"`)
+                        .join(', ')}]`}
+                      provider='anilist'
+                    />
                   </div>
-                </Link>
-              )
-          )}
-        </div>
+                }
+                <Row
+                  title='Trending Anime'
+                  fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/trending?perPage=100'
+                  provider='anilist'
+                />
+              </>
+            ) : (
+              <>
+                {' '}
+                <h1>Recommendations</h1>
+                <div className='animeinfo__row__posters'>
+                  {anime?.recommendations?.map(
+                    (anime) =>
+                      anime.image && (
+                        <Link
+                          to={`/info/${anime.title.romaji
+                            .split(' ')
+                            .join('-')}-${anime.id}`}
+                          onClick={() => setLoading(true)}
+                        >
+                          <div className='animeinfo__poster-container'>
+                            <img
+                              className={`row__poster`}
+                              key={anime.id}
+                              src={anime.image}
+                            ></img>
+                            {
+                              <p className='animeinfo__overlay-text'>
+                                {truncate(
+                                  `${
+                                    anime.title.english || anime.title.romaji
+                                  }`,
+                                  20
+                                )}
+                              </p>
+                            }
+                          </div>
+                        </Link>
+                      )
+                  )}
+                </div>{' '}
+              </>
+            )}
+          </>
+        }
       </div>
     </>
   );
