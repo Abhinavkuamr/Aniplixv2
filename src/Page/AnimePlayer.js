@@ -156,26 +156,6 @@ function AnimePlayer() {
         </div>
         <div className='animeplayer--fadeBottom' />
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <iframe
-          data-aa='2277399'
-          src='//ad.a-ads.com/2277399?size=728x90'
-          style={{
-            width: '728px',
-            height: '90px',
-            border: '0px',
-            padding: '0',
-            overflow: 'hidden',
-            backgroundColor: 'transparent',
-          }}
-        ></iframe>
-      </div>
 
       <div className='animeplayer__row'>
         <h1>Recommendations</h1>
