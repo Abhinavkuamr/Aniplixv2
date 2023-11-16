@@ -4,7 +4,7 @@ import logo from '../Component/logo2.png';
 function NotFound() {
   useEffect(() => {
     // Simulate a 5-second delay
-    const delay = 1000;
+    const delay = 6000;
 
     // Set a timeout to redirect to the home page after the delay
     const timeoutId = setTimeout(() => {
