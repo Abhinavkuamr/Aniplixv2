@@ -58,7 +58,7 @@ function AnimePlayer() {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 50);
     console.log(anime_id);
     async function fetchAnime() {
       let response = '';
