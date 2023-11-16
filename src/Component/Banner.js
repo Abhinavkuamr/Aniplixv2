@@ -17,7 +17,8 @@ function Banner() {
       const banner_toShow = request.data.results[rand];
 
       if (
-        (banner_toShow && banner_toShow.id === '21') ||
+        banner_toShow === undefined ||
+        banner_toShow.id === '21' ||
         banner_toShow.id === '97940'
       ) {
         const request = await axios.get(
