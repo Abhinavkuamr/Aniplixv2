@@ -38,6 +38,9 @@ function AnimeInfo() {
   let anime_id = '';
 
   console.log(queryParam.id === '16bit-sensation-another-layer');
+  if (queryParam.id === 'jujutsu-kaisen-2nd-season') {
+    anime_id = 'jujutsu-kaisen-tv-2nd-season';
+  }
   if (queryParam.id === '16bit-sensation-another-layer') {
     anime_id = '16bit-sensation';
   } else {
