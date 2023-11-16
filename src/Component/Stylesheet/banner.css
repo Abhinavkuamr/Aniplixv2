@@ -36,6 +36,21 @@
   background-image: linear-gradient(
     180deg,
     transparent,
+    rgba(21, 20, 20, 0.61),
+    #111
+  );
+}
+
+.banner--fadeUP {
+  height: 7.4rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%; /* Adjust the height as needed */
+  z-index: 2; /* Ensure the overlays appear above other content */
+  background-image: linear-gradient(
+    0deg,
+    transparent,
     rgba(37, 37, 37, 0.61),
     #111
   );

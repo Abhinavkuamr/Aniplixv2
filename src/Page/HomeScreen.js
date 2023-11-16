@@ -51,6 +51,7 @@ export default function HomeScreen() {
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/trending?perPage=100'
           provider='anilist'
         />
+        <Banner />
 
         <Row
           title='Popular Anime'
@@ -63,6 +64,7 @@ export default function HomeScreen() {
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Slice of Life%22]'
           provider='anilist'
         />
+        <Banner />
 
         <Row
           title='Romance Anime'
@@ -75,6 +77,7 @@ export default function HomeScreen() {
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Psychological%22]'
           provider='anilist'
         />
+        <Banner />
 
         <Row
           title='Action Anime'
@@ -87,6 +90,7 @@ export default function HomeScreen() {
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Supernatural%22]'
           provider='anilist'
         />
+        <Banner />
 
         <Row
           title='Adventure Anime'
@@ -99,6 +103,8 @@ export default function HomeScreen() {
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Sci-Fi%22]'
           provider='anilist'
         />
+        <Banner />
+
         <Row
           title='Comedy Anime'
           fetchUrl='https://aniplix-scraper.vercel.app/meta/anilist/advanced-search?genres=[%22Comedy%22]'
