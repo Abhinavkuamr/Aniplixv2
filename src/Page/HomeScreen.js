@@ -20,7 +20,8 @@ export default function HomeScreen() {
   useEffect(() => {
     const hasShownToasts = localStorage.getItem('shownToasts');
     const lastToastTime = localStorage.getItem('lastToastTime');
-
+    notify();
+    setShowToasts(true);
     // Check if toasts have not been shown or if it's been more than 1 hour since the last toast
     if (
       !hasShownToasts ||
