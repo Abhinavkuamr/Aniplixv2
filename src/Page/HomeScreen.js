@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const [showToasts, setShowToasts] = useState(false);
   const notify = () =>
     toast(
-      'We are aware of some dead-links and UI issues. It will be fixed soon.'
+      'Apologies! Our website is currently undergoing maintenance. Thank you for your understanding! '
     );
 
   const notify2 = () =>
