@@ -105,7 +105,7 @@ function AnimePlayer() {
     let response = '';
     try {
       response = await axios.get(
-        `https://betaversion-git-main-abhinavkuamrs-projects.vercel.app/api/eplink?id=${ep_id}`
+        `https://betaversion.vercel.app/api/eplink?id=${ep_id}`
       );
     } catch (err) {
       useNavigate.navigate('/wrong-page-mate');
