@@ -19,7 +19,7 @@ function Search() {
     async function fetchAnime(search) {
       try {
         const response = await axios.get(
-          `https://aniplix-scraper.vercel.app/anime/gogoanime/${search}`
+          `https://betaversion.vercel.app/api/search?id=${search}`
         );
         setAnime(response.data.results);
       } catch (err) {

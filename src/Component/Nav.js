@@ -46,7 +46,7 @@ function Nav() {
     setInputValue(e.target.value);
     try {
       const response = await axios.get(
-        `https://aniplix-scraper.vercel.app/anime/gogoanime/${e.target.value}`
+        `https://betaversion.vercel.app/api/search?id=${e.target.value}`
       );
       setSuggestions(response.data.results);
     } catch {
