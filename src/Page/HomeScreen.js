@@ -24,8 +24,7 @@ export default function HomeScreen() {
     // Check if toasts have not been shown or if it's been more than 1 hour since the last toast
     if (
       !hasShownToasts ||
-      lastToastTime ||
-      Date.now() - lastToastTime > 3600000
+      (lastToastTime && Date.now() - lastToastTime > 3600000)
     ) {
       notify();
       setShowToasts(true);
