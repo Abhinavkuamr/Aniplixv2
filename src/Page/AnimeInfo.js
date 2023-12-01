@@ -62,7 +62,7 @@ function AnimeInfo() {
       try {
         if (queryParam.provider === 'gogoanime') {
           response = await axios.get(
-            `https://aniplix-scraper.vercel.app/anime/gogoanime/info/${anime_id}`
+            `https://betaversion.vercel.app/api/info?id=${anime_id}`
           );
         } else {
           response = await axios.get(
