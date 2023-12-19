@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const [showToasts, setShowToasts] = useState(false);
   const notify = () =>
     toast(
-      'We are fixing the speed of website and broken links soon. Thank you for your understanding ! Enjoy.'
+      'Website is going under Maintenance. Sorry for Inconvenience'
     );
 
   const notify2 = () =>
