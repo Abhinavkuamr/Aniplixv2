@@ -26,8 +26,8 @@ export default function HomeScreen() {
       !hasShownToasts ||
       (lastToastTime && Date.now() - lastToastTime > 3600000)
     ) {
-      notify();
-      setShowToasts(true);
+      //notify();
+      //setShowToasts(true);
 
       // Store in local storage to remember that toasts have been shown and update the last toast time
       localStorage.setItem('shownToasts', 'true');
